@@ -13,6 +13,7 @@
     "express": "^4.15.4",
     "express-graphql": "^0.9.0",
     "graphql": "^14.5.4",
+    "graphql-tools": "^4.0.5",
     "mongoose": "^4.11.10",
     "nodemon": "^1.12.0"
   },
