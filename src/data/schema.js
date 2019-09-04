@@ -13,6 +13,7 @@ const typeDefs = `
 
     type Query {
         getContacts: [Contact]
+        getOneContact(id: ID!): Contact
     }
 
     input ContactInput {
@@ -25,6 +26,8 @@ const typeDefs = `
 
     type Mutation {
         createContact(input: ContactInput): Contact
+        updateContact(input: ContactInput): Contact
+        deleteContact(id: ID!): String
     }
 `;
 

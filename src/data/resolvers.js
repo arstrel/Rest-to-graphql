@@ -4,6 +4,14 @@ export const resolvers = {
     Query: {
         getContacts: () => {
             return Contacts.find();
+        },
+        getOneContact: (root, {id}) => {
+            return new Promise((resolve, reject) => {
+                Contacts.findById(id, (err, contact) => {
+                    if(err) reject(err)
+                    else resolve(contact)
+                });
+            });
         }
     },
 
@@ -24,6 +32,22 @@ export const resolvers = {
                     else resolve(newContact)
                 });
             });
+        },
+        updateContact: (root, {input}) => {
+            return new Promise((resolve, reject) => {
+                Contacts.findByIdAndUpdate(input.id, input, {new: true}, (err, contact) => {
+                    if(err) reject(err)
+                    else resolve(contact)
+                })
+            })
+        },
+        deleteContact: (root, {id}) => {
+            return new Promise((resolve, reject) => {
+                Contacts.findByIdAndRemove(id, (err)=> {
+                    if(err) reject(err)
+                    else resolve(`Contact deleted!`)
+                })
+            })
         }
     }
 }
