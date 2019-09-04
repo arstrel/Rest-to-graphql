@@ -24,7 +24,7 @@ const typeDefs = `
     }
 
     type Mutation {
-        createContact(input: ContactInput)
+        createContact(input: ContactInput): Contact
     }
 `;
 

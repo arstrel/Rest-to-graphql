@@ -1,11 +1,11 @@
 import express from 'express';
-import graphqlHTTP from 'express-graphql'
+import graphqlHTTP from 'express-graphql';
+import {schema} from './src/data/schema'
 
 const app = express();
 const PORT = 8080;
 
 
-routes(app);
 
 // serving static files
 app.use(express.static('public'));
@@ -15,8 +15,7 @@ app.get('/', (req, res) =>
 );
 
 app.use('/graphql', graphqlHTTP({
-    schema: schema,
-    rootValue: root,
+    schema,
     graphiql: true
 }))
 
